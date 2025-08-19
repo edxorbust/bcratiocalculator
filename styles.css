@@ -9,7 +9,7 @@
 body {
   margin: 0;
   font-family: "Quicksand", sans-serif;
-  background: url("file:///C:/Users/kevin/Documents/SUMMER%20BRIDGE/background.jpg") no-repeat center center fixed;
+  background: url("/background.jpg") no-repeat center center fixed;
   background-size: cover;
   color: #1f2937;
   min-height: 100vh;
