@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>B/C Ratio Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="stage">
+      <!-- Step 1: Saludo + nombre del proyecto -->
+      <section class="card enter" id="step-hello">
+        <h2>Welcome!</h2>
+        <p class="subtitle">Let’s collect the info for your project.</p>
+        <div class="field">
+          <label for="projectName">Project name</label>
+          <input
+            id="projectName"
+            type="text"
+            placeholder="e.g., Lopez Dam Upgrade"
+          />
+          <div class="error" id="errProject" style="display: none"></div>
+        </div>
+        <div class="actions">
+          <button class="btn-primary" id="btnHello">Enter</button>
+        </div>
+      </section>
+
+      <!-- Step 2: Costs -->
+      <section class="card" id="step-costs">
+        <div class="pill">Costs</div>
+        <h2>Enter your costs</h2>
+        <p class="subtitle">
+          Add at least two costs. Then you can go to benefits.
+        </p>
+
+        <div class="row">
+          <div class="field">
+            <label for="costName">Cost name</label>
+            <input
+              id="costName"
+              type="text"
+              placeholder="e.g., Costs for operations"
+            />
+          </div>
+          <div class="field">
+            <label for="costType">Type</label>
+            <select id="costType">
+              <option value="present">Present</option>
+              <option value="future">Future</option>
+              <option value="annual">Annual</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="costValue">Amount (≥ 0)</label>
+            <input
+              id="costValue"
+              type="number"
+              min="0"
+              step="any"
+              placeholder="e.g., 150000"
+            />
+          </div>
+        </div>
+        <div class="error" id="errCost" style="display: none"></div>
+        <div class="actions">
+          <button class="btn-primary" id="btnAddCost">Enter</button>
+          <button
+            class="btn-secondary"
+            id="btnGoBenefits"
+            style="display: none"
+          >
+            Add Benefits
+          </button>
+        </div>
+        <div class="list" id="listCosts"></div>
+        <p class="muted">Tip: keep pressing “Enter” to add more costs.</p>
+      </section>
+
+      <!-- Step 3: Benefits -->
+      <section class="card" id="step-benefits">
+        <div class="pill">Benefits</div>
+        <h2>Enter your benefits</h2>
+        <p class="subtitle">Add one or more benefits, then finish.</p>
+
+        <div class="row">
+          <div class="field">
+            <label for="benefitName">Benefit name</label>
+            <input
+              id="benefitName"
+              type="text"
+              placeholder="e.g., Annual revenue"
+            />
+          </div>
+          <div class="field">
+            <label for="benefitType">Type</label>
+            <select id="benefitType">
+              <option value="present">Present</option>
+              <option value="future">Future</option>
+              <option value="annual">Annual</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="benefitValue">Amount (≥ 0)</label>
+            <input
+              id="benefitValue"
+              type="number"
+              min="0"
+              step="any"
+              placeholder="e.g., 100000"
+            />
+          </div>
+        </div>
+        <div class="error" id="errBenefit" style="display: none"></div>
+        <div class="actions">
+          <button class="btn-primary" id="btnAddBenefit">Enter</button>
+          <button class="btn-secondary" id="btnFinish" style="display: none">
+            Finish
+          </button>
+        </div>
+        <div class="list" id="listBenefits"></div>
+        <p class="muted">Tip: press “Enter” to add more benefits.</p>
+      </section>
+
+      <!-- Step 4: Mensaje + elección de modo + r y n -->
+      <section class="card" id="step-final">
+        <h2>Great! 🎉</h2>
+        <p class="subtitle">
+          We already have the necessary information, let’s see if your project
+          is profitable.
+        </p>
+
+        <div class="row">
+          <div class="field">
+            <label for="calcMode">Calculate B/C in</label>
+            <select id="calcMode">
+              <option value="present">Present (PV)</option>
+              <option value="future">Future (FV)</option>
+              <option value="annual">Annual (PMT)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="rate">Interest rate % (r)</label>
+            <input
+              id="rate"
+              type="number"
+              min="0"
+              step="any"
+              placeholder="e.g., 10"
+            />
+          </div>
+          <div class="field">
+            <label for="years">Years (n)</label>
+            <input
+              id="years"
+              type="number"
+              min="1"
+              step="1"
+              placeholder="e.g., 5"
+            />
+          </div>
+        </div>
+        <div class="error" id="errFinal" style="display: none"></div>
+        <div class="actions">
+          <button class="btn-primary" id="btnCalculate">Calculate</button>
+        </div>
+      </section>
+
+      <!-- Step 5: Resultados -->
+      <section class="card" id="step-results">
+        <h2>Results</h2>
+        <div class="result-box" id="summary"></div>
+        <div class="result-box" id="totals"></div>
+        <div class="actions">
+          <button class="btn-secondary" id="btnRestart">Start over</button>
+          <button class="btn-secondary" id="btnEditTime">Edit Calculation</button>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
